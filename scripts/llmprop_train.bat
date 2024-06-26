@@ -10,6 +10,8 @@ set TASK_NAME="regression"
 set PROPERTY="band_gap"
 set BATCH_SIZE=8
 set PROPERTY_NAME="volume"
+set MAX_LEN = 512 
+@REM 888
 
 python llmprop_train.py ^
 --train_data_path %TRAIN_PATH% ^
@@ -19,4 +21,5 @@ python llmprop_train.py ^
 --task_name %TASK_NAME% ^
 --property %PROPERTY% ^
 --bs %BATCH_SIZE% ^
---property_name %PROPERTY_NAME%
+--property_name %PROPERTY_NAME% ^
+--max_len %MAX_LEN%
