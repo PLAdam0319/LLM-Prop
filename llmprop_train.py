@@ -4,8 +4,10 @@ Set up the training code
 import re
 import glob
 import time
-import datetime
-from datetime import timedelta
+# import datetime
+from datetime import timedelta, datetime
+import json
+import os
 
 import numpy as np
 import pandas as pd
@@ -60,6 +62,9 @@ def train(
     
     best_loss = 1e10 # Set the best loss variable which record the best loss for each epoch
     best_roc = 0.0
+
+    mae_values = []
+    train_loss_values = []
 
     for epoch in range(epochs):
         print(f"========== Epoch {epoch+1}/{epochs} =========")
@@ -117,6 +122,7 @@ def train(
         
         # average training loss on actual output
         average_training_loss = total_training_loss/len(train_dataloader) 
+        train_loss_values.append(average_training_loss)
         
         epoch_ending_time = time.time()
         training_time = time_format(epoch_ending_time - epoch_starting_time)
@@ -252,6 +258,7 @@ def train(
                 best_loss = best_loss
             
             print(f"Validation mae error = {valid_performance}")
+            mae_values.append(valid_performance)
         print(f"validation took {validation_time}")
     train_ending_time = time.time()
     total_training_time = train_ending_time-training_starting_time
@@ -264,7 +271,49 @@ def train(
 
     elif task_name == "regression":
         print(f"The lowest mae error achieved on validation set on predicting {property} is {best_loss} at {best_epoch}th epoch \n")
+    # -----------------------------------------------------------------------------------
+    current_time = time.strftime("%Y%m%d_%H%M%S")
+    # plot_every = 5
+    output_dir = f'D:\\T4Mat\\pics\\data\\maxlen{max_length}_epochs{epochs}_{current_time}'
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    # -----------------------------------------------------------------------------------
+    # plt.figure(figsize=(10, 5))
+    # epochs_range = range(1, epochs + 1, plot_every)
+    # mae_plot_values = mae_values[::plot_every]
+    # train_loss_plot_values = train_loss_values[::plot_every]
     
+    # plt.plot(epochs_range, mae_plot_values, label='Validation MAE')
+    # plt.plot(epochs_range, train_loss_plot_values, label='Training Loss')
+    
+    # for i in range(len(epochs_range)):
+    #     plt.annotate(f'{mae_plot_values[i]:.2f}', (epochs_range[i], mae_plot_values[i]), textcoords="offset points", xytext=(0,10), ha='center')
+    #     plt.annotate(f'{train_loss_plot_values[i]:.2f}', (epochs_range[i], train_loss_plot_values[i]), textcoords="offset points", xytext=(0,10), ha='center')
+    
+    # plt.xlabel('Epochs')
+    # plt.ylabel('Value')
+    # plt.title(f'MAE and Training Loss vs Epochs (max_len={max_length})')
+    # plt.legend()
+    # plt.grid(True)
+    # plot_filename = f'D:\\T4Mat\\pics\\mae_train_loss_vs_epochs_{current_time}.png'
+    # plt.savefig(plot_filename)
+    # plt.show()
+    # -----------------------------------------------------------------------------------
+
+    # Convert Tensor objects to floats before saving
+    mae_values = [float(val) for val in mae_values]
+    train_loss_values = [float(val) for val in train_loss_values]
+    
+    # Save the mae and train loss values to separate files
+    mae_file = os.path.join(output_dir, f'mae_values_maxlen{max_length}_epochs{epochs}_{current_time}.json')
+    train_loss_file = os.path.join(output_dir, f'train_loss_values_maxlen{max_length}_epochs{epochs}_{current_time}.json')
+    
+    with open(mae_file, 'w') as f:
+        json.dump(mae_values, f)
+    
+    with open(train_loss_file, 'w') as f:
+        json.dump(train_loss_values, f)
+
     return training_stats, validation_predictions
 
 def evaluate(
