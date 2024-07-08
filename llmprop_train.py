@@ -274,7 +274,7 @@ def train(
     # -----------------------------------------------------------------------------------
     current_time = time.strftime("%Y%m%d_%H%M%S")
     # plot_every = 5
-    output_dir = f'D:\\T4Mat\\pics\\data\\maxlen{max_length}_epochs{epochs}_{current_time}'
+    output_dir = f'/home/pxli/research/T4Mat/pics/data/matbench_dielectric/maxlen{max_length}_epochs{epochs}_{current_time}'
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     # -----------------------------------------------------------------------------------
@@ -295,7 +295,7 @@ def train(
     # plt.title(f'MAE and Training Loss vs Epochs (max_len={max_length})')
     # plt.legend()
     # plt.grid(True)
-    # plot_filename = f'D:\\T4Mat\\pics\\mae_train_loss_vs_epochs_{current_time}.png'
+    # plot_filename = f'D:/T4Mat/pics/mae_train_loss_vs_epochs_{current_time}.png'
     # plt.savefig(plot_filename)
     # plt.show()
     # -----------------------------------------------------------------------------------
