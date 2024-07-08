@@ -3,7 +3,7 @@
 TRAIN_PATH="/home/pxli/research/T4Mat/LLM-Prop/data/matbench_phonons/train.csv"
 VALID_PATH="/home/pxli/research/T4Mat/LLM-Prop/data/matbench_phonons/validation.csv"
 TEST_PATH="/home/pxli/research/T4Mat/LLM-Prop/data/matbench_phonons/test.csv"
-EPOCHS=2 # the default epochs is 200 to get the best performance
+EPOCHS=200 # the default epochs is 200 to get the best performance
 TASK_NAME="regression" # the task name can also be set to "classification"
 BATCH_SIZE=8
 PROPERTY_NAME="volume"
