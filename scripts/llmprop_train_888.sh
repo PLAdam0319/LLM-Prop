@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd LLM-Prop/
 
 TRAIN_PATH="/home/pxli/research/T4Mat/LLM-Prop/data/matbench_phonons/train.csv"
 VALID_PATH="/home/pxli/research/T4Mat/LLM-Prop/data/matbench_phonons/validation.csv"
