@@ -274,7 +274,7 @@ def train(
     # -----------------------------------------------------------------------------------
     current_time = time.strftime("%Y%m%d_%H%M%S")
     # plot_every = 5
-    output_dir = f'/home/pxli/research/T4Mat/pics/data/matbench_steels/maxlen{max_length}_epochs{epochs}_{current_time}'
+    output_dir = f'/home/pxli/research/T4Mat/pics/data/matbench_steels/7_maxlen{max_length}_epochs{epochs}_{current_time}'
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     # -----------------------------------------------------------------------------------
