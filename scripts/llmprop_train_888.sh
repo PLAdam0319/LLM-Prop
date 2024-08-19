@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 cd LLM-Prop/
 
-TRAIN_PATH="/home/pxli/research/T4Mat/matbench_steels/steels_train_7.csv"
-VALID_PATH="/home/pxli/research/T4Mat/matbench_steels/steels_validation.csv"
-TEST_PATH="/home/pxli/research/T4Mat/matbench_steels/steels_test.csv"
-EPOCHS=200 # the default epochs is 200 to get the best performance
+TRAIN_PATH="/home/pxli/research/T4Mat/matbench_steels/30/steels_train_fs_30.csv"
+VALID_PATH="/home/pxli/research/T4Mat/matbench_steels/30/steels_validation_fs_30.csv"
+TEST_PATH="/home/pxli/research/T4Mat/matbench_steels/30/steels_test_fs_30.csv"
+EPOCHS=400 # the default epochs is 200 to get the best performance
 TASK_NAME="regression" # the task name can also be set to "classification"
 BATCH_SIZE=8
 PROPERTY_NAME="volume"
