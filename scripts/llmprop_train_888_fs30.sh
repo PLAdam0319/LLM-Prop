@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 cd LLM-Prop/
 
-TRAIN_PATH="/home/pxli/research/T4Mat/matbench_steels/cleaned/train.csv"
-VALID_PATH="/home/pxli/research/T4Mat/matbench_steels/cleaned/validation.csv"
-TEST_PATH="/home/pxli/research/T4Mat/matbench_steels/cleaned/test.csv"
-EPOCHS=400 # the default epochs is 200 to get the best performance
+TRAIN_PATH="/home/pxli/research/T4Mat/matbench_steels/30/steels_train_fs_30.csv"
+VALID_PATH="/home/pxli/research/T4Mat/matbench_steels/30/steels_validation_fs_30.csv"
+TEST_PATH="/home/pxli/research/T4Mat/matbench_steels/30/steels_test_fs_30.csv"
+EPOCHS=400 # the default epochs is 300 to get the best performance
 TASK_NAME="regression" # the task name can also be set to "classification"
 BATCH_SIZE=8
 PROPERTY_NAME="volume"
@@ -28,7 +28,7 @@ python llmprop_train.py \
 # set TRAIN_PATH="data\samples\textedge_prop_mp22_train.csv"
 # set VALID_PATH="data\samples\textedge_prop_mp22_valid.csv"
 # set TEST_PATH="data\samples\textedge_prop_mp22_test.csv"
-# set EPOCHS=200
+# set EPOCHS=300
 # set TASK_NAME="regression"
 # set BATCH_SIZE=8
 # set PROPERTY_NAME="volume"

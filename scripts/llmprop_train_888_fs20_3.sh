@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 cd LLM-Prop/
 
-TRAIN_PATH="/home/pxli/research/T4Mat/matbench_steels/cleaned/train.csv"
-VALID_PATH="/home/pxli/research/T4Mat/matbench_steels/cleaned/validation.csv"
-TEST_PATH="/home/pxli/research/T4Mat/matbench_steels/cleaned/test.csv"
-EPOCHS=400 # the default epochs is 200 to get the best performance
+TRAIN_PATH="/home/pxli/research/T4Mat/matbench_steels/20/5-fold/train_fold_3.csv"
+VALID_PATH="/home/pxli/research/T4Mat/matbench_steels/20/steels_validation_fs_20.csv"
+TEST_PATH="/home/pxli/research/T4Mat/matbench_steels/20/5-fold/test_fold_3.csv"
+EPOCHS=200 # the default epochs is 200 to get the best performance
 TASK_NAME="regression" # the task name can also be set to "classification"
 BATCH_SIZE=8
 PROPERTY_NAME="volume"
-MAX_LEN=888
+MAX_LEN=640
 
 python llmprop_train.py \
 --train_data_path $TRAIN_PATH \
